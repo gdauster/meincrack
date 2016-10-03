@@ -5,9 +5,10 @@
 
 #include <GL/glew.h>
 
-#ifdef _WIN_
-#include <GL/wglew.h>
-#include <Windows.h>
+#ifdef __linux__
+#elif _WIN32
+	#include <GL/wglew.h>
+	#include <Windows.h>
 #endif
 
 #include <SDL2/SDL_main.h>

@@ -1,0 +1,5 @@
+meincrack*
+*.o
+.vs/
+Debug/
+x64/

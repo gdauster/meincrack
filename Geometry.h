@@ -1,7 +1,13 @@
 #ifndef _GEOMETRY_H_
 #define _GEOMETRY_H_
 
-#include <GL/gl.h>
+#include <GL/glew.h>
+
+#ifdef __linux__
+#elif _WIN32
+#include <GL/wglew.h>
+#include <Windows.h>
+#endif
 
 class Vector3 {
 private:
