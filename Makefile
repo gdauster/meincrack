@@ -1,4 +1,4 @@
-OUT = minecrack
+OUT = meincrack
 CXX = g++
 SDL = -lSDL2
 GL	= -L/usr/lib64/ -lGLEW -lGLU -lGL
