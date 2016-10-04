@@ -34,6 +34,8 @@ void init(void) {
 		0.5f, 0.5f, 0.1f,
 	};
 
+	//nouveau param
+
 	GLfloat trVert2[NumVertices] = {
 		-0.5f, 0.0f, 0.0f,
 		0.0f, 0.5f, 0.0f,
