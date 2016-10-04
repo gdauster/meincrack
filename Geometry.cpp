@@ -1,7 +1,7 @@
-/* Copyright (c) 2016 Minecrack */
+/* Copyright (c) 2016 Meincrack */
 #include "Geometry.h"
 
-void Vector3::set(const GLint x, const GLint y, const GLint z) {
+void Vector3::set(const GLfloat x, const GLfloat y, const GLfloat z) {
   _x = x;
   _y = y;
   _z = z;
@@ -33,22 +33,22 @@ void Vector3::div(const Vector3& vector) {
   _z /= vector.getZ();
 }
 
-void Vector3::add(const GLint scalar) {
+void Vector3::add(const GLfloat scalar) {
   _x += scalar;
   _y += scalar;
   _z += scalar;
 }
-void Vector3::sub(const GLint scalar) {
+void Vector3::sub(const GLfloat scalar) {
   _x -= scalar;
   _y -= scalar;
   _z -= scalar;
 }
-void Vector3::mul(const GLint scalar) {
+void Vector3::mul(const GLfloat scalar) {
   _x *= scalar;
   _y *= scalar;
   _z *= scalar;
 }
-void Vector3::div(const GLint scalar) {
+void Vector3::div(const GLfloat scalar) {
   _x /= scalar;
   _y /= scalar;
   _z /= scalar;
