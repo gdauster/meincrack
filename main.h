@@ -2,6 +2,8 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+#define BUFFER_OFFSET(a) (reinterpret_cast<void*>(a))
+
 #include <GL/glew.h>
 
 #ifdef __linux__
