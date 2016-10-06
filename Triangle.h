@@ -25,9 +25,13 @@ public:
 	GLuint Buffer[LENGTH];
 	GLuint VAO;
 	Vector3* position;
+	GLfloat* _vertices;
+	GLuint _program;
 
 	// METHODS
 	void Draw();
+	void MoveLeft();
+	void MoveRight();
 };
 
 #endif

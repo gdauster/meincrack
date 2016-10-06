@@ -10,7 +10,8 @@ class Scene {
 
 private:
 	// ATRIBUTES
-	Triangle* _triangle;
+	Triangle* _triangle1;
+	Triangle* _triangle2;
 
 public:
 	// CONSTRUCTORS
