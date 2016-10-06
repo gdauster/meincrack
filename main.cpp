@@ -13,54 +13,8 @@
 #include <iostream>
 
 using namespace std;
-/* Copyright (c) 2016 Meincrack */
 #include "Geometry.h"
-
-enum VAO_IDS { Triangle1, Triangle2, NumVAOs };
-enum Buffer_IDs { ArrayBuffer, NumBuffers };
-enum Attrib_IDs { vPosition = 0 };
-
-GLuint  VAOs[NumVAOs];
-GLuint  Buffers[NumBuffers];
-
-const GLuint NumVertices = 3*3;
-
-void init(void) {
-    glGenVertexArrays(NumVAOs, VAOs);
-
-	GLfloat trVert1[NumVertices] = {
-		0.0f, 0.0f, 0.1f,
-		0.0f, 0.5f, 0.1f,
-		0.5f, 0.5f, 0.1f,
-	};
-
-	GLfloat trVert2[NumVertices] = {
-		-0.5f, 0.0f, 0.0f,
-		0.0f, 0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f
-	};
-
-	glBindVertexArray(VAOs[Triangle1]);
-
-	glGenBuffers(NumBuffers, Buffers);
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]);
-	glBufferStorage(GL_ARRAY_BUFFER, sizeof(trVert1), trVert1, 0);
-
-	glVertexAttribPointer(vPosition, 3, GL_FLOAT,
-		GL_FALSE, 0, BUFFER_OFFSET(0));
-	glEnableVertexAttribArray(vPosition);
-
-	glBindVertexArray(VAOs[Triangle2]);
-
-	glGenBuffers(NumBuffers, Buffers);
-	glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]);
-	glBufferStorage(GL_ARRAY_BUFFER, sizeof(trVert2), trVert2, 0);
-
-    glVertexAttribPointer(vPosition, 3, GL_FLOAT,
-        GL_FALSE, 0, BUFFER_OFFSET(0));
-    glEnableVertexAttribArray(vPosition);
-}
-
+#include "Scene.h"
 
 SDL_GLContext glContext;
 SDL_Event sdlEvent;
@@ -73,10 +27,6 @@ void destroy(void) {
 }
 
 int main(int argc, char** argv) {
-  Vector3 vector1 = Vector3();
-  Vector3 vector2 = Vector3(5, 2, 3);
-  Vector3 a = vector2 * 5;
-  cout << a.getX() << endl;
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
@@ -115,10 +65,7 @@ int main(int argc, char** argv) {
     return -1;
   }
 
-  glDisable(GL_LIGHTING);
-  glEnable(GL_DEPTH_TEST);
-
-  init();
+  Scene s = Scene();
   while (!quit) {
       while (SDL_PollEvent(&sdlEvent) != 0) {
           if (sdlEvent.type == SDL_QUIT) {
@@ -126,15 +73,7 @@ int main(int argc, char** argv) {
           }
       }
 
-      glClearColor(0.39f, 0.58f, 0.93f, 1.f);
-
-	  glColor3f(1.0f, 0.0f, 0.0f);
-	  glBindVertexArray(VAOs[Triangle1]);
-	  glDrawArrays(GL_TRIANGLES, 0, NumVertices);
-
-	  glColor3f(0.0f, 1.0f, 0.0f);
-	  glBindVertexArray(VAOs[Triangle2]);
-	  glDrawArrays(GL_TRIANGLES, 0, NumVertices);
+	  s.DrawAll();
 
       SDL_GL_SwapWindow(pWindow);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
