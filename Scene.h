@@ -5,13 +5,14 @@
 #include "main.h"
 #include "Geometry.h"
 #include "Triangle.h"
+#include "Renderer.h"
 
 class Scene {
 
 private:
 	// ATRIBUTES
 	Triangle* _triangle1;
-	Triangle* _triangle2;
+	Renderer renderer;
 
 public:
 	// CONSTRUCTORS

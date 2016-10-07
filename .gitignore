@@ -3,3 +3,4 @@ meincrack*
 .vs/
 Debug/
 x64/
+*.TMP
