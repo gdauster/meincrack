@@ -9,7 +9,7 @@ class Triangle {
 
 private:
 	// ATTRIBUTES
-	const enum _bufferIDs { VERTICES, COLORS, LENGTH };
+	enum _bufferIDs { VERTICES, COLORS, LENGTH };
 
 public:
 	// CONSTRUCTORS
